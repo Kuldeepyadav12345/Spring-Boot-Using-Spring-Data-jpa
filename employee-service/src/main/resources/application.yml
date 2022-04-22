@@ -1,0 +1,5 @@
+server:  port: 8080  spring:  profiles:    active:    - podinfo:
+  version: "1.0"  app-name: "EmployeeService"  description: "Demo"management:  endpoint:    web:      exposure:        include: "*"     
+---
+
+spring:  config:    activate:      on-profile: dev  datasource:    url: jdbc:h2:mem:mydb    username: test    password: test    driver-class-name: org.h2.Driver      h2:    console:      enabled: true      jpa:    properties:      hibenate:        dialect:org.hibernate.dialect.H2Dialect        --- spring:  config:    activate:      on-profile: pod  datasource:    url: jdbc:oracle:thin:@localhost:1521:xe    username: system    password: test    driver-class-name: oracle.jdbc.OracleDriver     h2:    console:      enabled: true      jpa:    properties:      hibenate:        dialect:org.hibernate.dialect.Oracle10gDialect      hibernate:        ddl-auto=update                                                                                                                                                                
